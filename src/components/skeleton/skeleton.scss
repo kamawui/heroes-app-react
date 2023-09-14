@@ -1,5 +1,7 @@
 .skeleton {
+    height: 400px;
     &__header {
+        font-size: 46px;
         display: grid;
         grid-template-columns: 40px auto;
         column-gap: 10px;

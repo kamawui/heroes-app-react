@@ -1,5 +1,6 @@
 import './charInfo.scss';
 import {Component} from "react";
+import Skeleton from "../skeleton/Skeleton";
 
 class CharInfo extends Component{
     constructor(props) {
@@ -8,7 +9,7 @@ class CharInfo extends Component{
 
     render() {
         const {activeChar} = this.props;
-        const content = activeChar ? <View info={activeChar}/> : null;
+        const content = activeChar ? <View info={activeChar}/> : <Skeleton />;
 
         return (
             <div>
