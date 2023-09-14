@@ -34,7 +34,7 @@ class CharList extends Component {
         const tempList = [];
         const tempIDsList = [];
 
-        while (tempList.length !== 9) {
+        for (let i = 0; i < 9; i++) {
             let tempChar = await this.marvelService.getCharacter(this.marvelService.getRandomId());
 
             // prevent characters repeat
@@ -42,6 +42,7 @@ class CharList extends Component {
                 tempChar = await this.marvelService.getCharacter(this.marvelService.getRandomId());
             }
 
+            tempChar["key"] = i;
             tempList.push(tempChar);
             tempIDsList.push(tempChar.id);
         }
@@ -54,7 +55,6 @@ class CharList extends Component {
     }
 
     onCharsLoaded = (list) => {
-        // console.log("list -" + list);
         this.setState({
             charList: this.state.charList.concat(list),
             loading: false,
@@ -97,7 +97,7 @@ class CharList extends Component {
             const itemClasses = activeElementID === item.id ? "char__item char__item_selected" : "char__item";
 
             return (
-                <li className={itemClasses} onClick={() => this.onActive(item)}>
+                <li className={itemClasses} key={item.id} onClick={() => this.onActive(item)}>
                     <img src={item.thumbnail} alt={item.name}/>
                     <div className="char__name">{item.name}</div>
                 </li>

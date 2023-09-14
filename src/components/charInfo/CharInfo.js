@@ -1,39 +1,9 @@
 import './charInfo.scss';
-import thor from '../../resources/img/thor.jpeg';
 import {Component} from "react";
 
 class CharInfo extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-            name: null,
-            description: null,
-            thumbnail: null,
-            home: null,
-            wiki: null,
-            id: null,
-            comics: null,
-        }
-        this.setActiveChar(this.props.activeChar);
-    }
-
-    // componentDidMount() {
-    //     this.setActiveChar(this.props.activeChar);
-    // }
-
-    setActiveChar = (activeChar) => {
-        if (activeChar) {
-            console.log(1);
-            this.setState({
-                name: activeChar.name,
-                description: activeChar.description,
-                thumbnail: activeChar.thumbnail,
-                home: activeChar.home,
-                wiki: activeChar.wiki,
-                id: activeChar.id,
-                comics: activeChar.comics,
-            })
-        }
     }
 
     render() {
@@ -50,11 +20,11 @@ class CharInfo extends Component{
 }
 
 const View = ({info}) => {
-    const {name, description, thumbnail, home, wiki, id, comics} = info;
+    const {name, description, thumbnail, home, wiki, comics} = info;
 
-    const comicsList = comics.items.map(item => {
+    const comicsList = comics.items.map((item, key) => {
         return (
-            <li className="char__comics-item">
+            <li className="char__comics-item" key={key}>
                 {item.name}
             </li>
         )

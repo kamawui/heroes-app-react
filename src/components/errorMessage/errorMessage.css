@@ -2,4 +2,9 @@
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+.error-message img {
+    width: 84px;
+    height: 64px;
 }
